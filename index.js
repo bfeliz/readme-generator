@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-let mark = require("./utils/generateMarkdown.js");
+const mark = require("./utils/generateMarkdown.js");
 const fs = require("fs");
 
 inquirer
@@ -18,18 +18,47 @@ inquirer
             type: "input",
             name: "description",
             message: "Type a description of your project:"
+        },
+        {
+            type: "input",
+            name: "install",
+            message: "Type the steps to install your project:"
+        },
+        {
+            type: "input",
+            name: "usage",
+            message: "Type project instructions and examples of use:"
+        },
+        {
+            type: "input",
+            name: "license",
+            message: "Type your chosen license:"
+        },
+        {
+            type: "input",
+            name: "contrib",
+            message: "Add guidelines for community contribution:"
+        },
+        {
+            type: "input",
+            name: "tests",
+            message: "Type how to run your project tests:"
         }
     ])
     .then(function(data) {
-        mark.generateMarkdown(data);
-        // let returnedData = JSON.stringify(data, null, "\t");
-        // console.log(returnedData);
-        // module.exports = returnedData;
+        writeToFile();
+
+        function writeToFile() {
+            const markdown = mark.generateMarkdown(data);
+            fs.writeFile("new-readme.md", markdown, function(err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("File generated");
+                }
+            });
+        }
     });
-
-const questions = [];
-
-function writeToFile(fileName, data) {}
 
 function init() {}
 
