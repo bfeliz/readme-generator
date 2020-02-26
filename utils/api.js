@@ -8,7 +8,7 @@ const api = {
                 `https://api.github.com/users/${username}?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
             )
             .catch(err => {
-                console.log("User not found");
+                console.log("User not found", err);
                 process.exit(1);
             });
     }
