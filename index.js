@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const mark = require("./utils/generateMarkdown.js");
 const fs = require("fs");
+const apiData = require("./utils/api.js");
 
 inquirer
     .prompt([
@@ -46,6 +47,8 @@ inquirer
         }
     ])
     .then(function(data) {
+        const username = data.githubName;
+        apiData.getUser(username);
         writeToFile();
 
         function writeToFile() {
