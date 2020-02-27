@@ -1,9 +1,12 @@
-const inquirer = require("inquirer");
+// get data from other modules
 const mark = require("./utils/generateMarkdown.js");
 const questions = require("./utils/questions.js");
-const fs = require("fs");
 const apiData = require("./utils/api.js");
+// get data from packages
+const inquirer = require("inquirer");
+const fs = require("fs");
 
+// asynchronous function to gather all the data requested and condense into one data object
 (async function init() {
     try {
         const user = await inquirer.prompt(questions.questions);
@@ -19,6 +22,7 @@ const apiData = require("./utils/api.js");
     }
 })();
 
+// function to write markdown file with gathered data
 function writeToFile(data) {
     const markdown = mark.generateMarkdown(data);
     fs.writeFile("new-readme.md", markdown, function(err) {

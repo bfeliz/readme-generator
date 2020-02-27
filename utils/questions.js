@@ -1,3 +1,4 @@
+// questions array for inquirer prompts
 var questions = [
     {
         type: "input",

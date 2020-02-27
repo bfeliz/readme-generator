@@ -1,6 +1,8 @@
+// get packages
 require("dotenv").config();
 const axios = require("axios");
 
+// API call with axios to get GitHub data, using keys hidden in .env file
 const api = {
     getUser(username) {
         return axios
