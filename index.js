@@ -5,14 +5,18 @@ const fs = require("fs");
 const apiData = require("./utils/api.js");
 
 (async function init() {
-    const user = await inquirer.prompt(questions.questions);
-    const { data: githubData } = await apiData.getUser(user.githubName);
-    writeToFile({
-        ...user,
-        photo: githubData.avatar_url,
-        email: githubData.email || "User email is not public",
-        followers: githubData.followers
-    });
+    try {
+        const user = await inquirer.prompt(questions.questions);
+        const { data: githubData } = await apiData.getUser(user.githubName);
+        writeToFile({
+            ...user,
+            photo: githubData.avatar_url,
+            email: githubData.email || "User email is not public",
+            followers: githubData.followers
+        });
+    } catch (err) {
+        console.log(err);
+    }
 })();
 
 function writeToFile(data) {
