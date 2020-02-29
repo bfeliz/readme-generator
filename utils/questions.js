@@ -1,5 +1,5 @@
 // questions array for inquirer prompts
-var questions = [
+const questions = [
     {
         type: "input",
         name: "githubName",
