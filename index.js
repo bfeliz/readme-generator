@@ -9,7 +9,7 @@ const fs = require("fs");
 // asynchronous function to gather all the data requested and condense into one data object
 (async function init() {
     try {
-        const user = await inquirer.prompt(questions.questions);
+        const user = await inquirer.prompt(questions);
         const { data: githubData } = await apiData.getUser(user.githubName);
         writeToFile({
             ...user,
