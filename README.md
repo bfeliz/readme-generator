@@ -2,7 +2,7 @@
 
 ## Description
 
-Creates a command line application that gathers user input and dynamically generates a good README including that input.
+Creates a command line application that gathers user input and dynamically generates a good README with that input.
 
 ## Getting Started
 
